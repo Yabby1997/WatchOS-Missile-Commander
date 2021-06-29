@@ -11,8 +11,6 @@ import WatchKit
 public class GameScene: SKScene, SKPhysicsContactDelegate {
     // MARK: - Labels
     
-    let tapGesture: WKTapGestureRecognizer = WKTapGestureRecognizer()
-    
     lazy var scoreLabel: SKLabelNode = {
         let label = SKLabelNode(fontNamed: "PressStart2P")
         label.fontSize = 20
@@ -486,8 +484,7 @@ public class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     // MARK: - Player click input
-    @IBAction func handleGesture(gestureRecognizer: WKGestureRecognizer) {
-        let location = tapGesture.locationInObject()
+    func touched(location: CGPoint) {
         let touchedNode = atPoint(location)
         if touchedNode.name == "retryLabel" {
             startNewGame()
@@ -498,21 +495,6 @@ public class GameScene: SKScene, SKPhysicsContactDelegate {
             silo.shoot(coordinate: location, distance: distance)
         }
     }
-    
-//    public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        for touch: AnyObject in touches {
-//            let location = touch.location(in: self)
-//            let touchedNode = atPoint(location)
-//            if touchedNode.name == "retryLabel" {
-//                startNewGame()
-//            } else {
-//                guard let closestAvailableSiloInfo = getClosestAvailableSiloInfo(targetCoordinate: location) else { return }
-//                let silo = closestAvailableSiloInfo.0
-//                let distance = closestAvailableSiloInfo.1
-//                silo.shoot(coordinate: location, distance: distance)
-//            }
-//        }
-//    }
     
     // MARK: - Building related methods
     func getClosestAvailableSiloInfo(targetCoordinate: CGPoint) -> (Silo, CGFloat)? {
