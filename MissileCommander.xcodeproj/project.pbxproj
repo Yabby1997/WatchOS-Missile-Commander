@@ -1,0 +1,865 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1DC3C53A268B471D00B04775 /* MissileCommander WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 1DC3C539268B471D00B04775 /* MissileCommander WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		1DC3C540268B471D00B04775 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DC3C53E268B471D00B04775 /* Interface.storyboard */; };
+		1DC3C542268B471E00B04775 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DC3C541268B471E00B04775 /* Assets.xcassets */; };
+		1DC3C549268B471E00B04775 /* MissileCommander WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 1DC3C548268B471E00B04775 /* MissileCommander WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		1DC3C54E268B471E00B04775 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC3C54D268B471E00B04775 /* InterfaceController.swift */; };
+		1DC3C550268B471E00B04775 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC3C54F268B471E00B04775 /* ExtensionDelegate.swift */; };
+		1DC3C552268B471E00B04775 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC3C551268B471E00B04775 /* ComplicationController.swift */; };
+		1DC3C554268B471F00B04775 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DC3C553268B471F00B04775 /* Assets.xcassets */; };
+		1DC3C5A4268B485900B04775 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC3C564268B485800B04775 /* Constants.swift */; };
+		1DC3C5A5268B485900B04775 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC3C565268B485800B04775 /* Utils.swift */; };
+		1DC3C5A6268B485900B04775 /* friendly_explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1DC3C568268B485800B04775 /* friendly_explosion.wav */; };
+		1DC3C5A7268B485900B04775 /* hostile_explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1DC3C569268B485800B04775 /* hostile_explosion.wav */; };
+		1DC3C5A8268B485900B04775 /* launch.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1DC3C56A268B485800B04775 /* launch.wav */; };
+		1DC3C5A9268B485900B04775 /* item.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1DC3C56B268B485800B04775 /* item.wav */; };
+		1DC3C5AA268B485900B04775 /* warhead_11.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DC3C56D268B485800B04775 /* warhead_11.png */; };
+		1DC3C5AB268B485900B04775 /* city_item.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DC3C56E268B485800B04775 /* city_item.png */; };
+		1DC3C5AC268B485900B04775 /* city.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DC3C56F268B485800B04775 /* city.png */; };
+		1DC3C5AD268B485900B04775 /* explosion_300.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DC3C570268B485800B04775 /* explosion_300.png */; };
+		1DC3C5AE268B485900B04775 /* warhead_7.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DC3C571268B485800B04775 /* warhead_7.png */; };
+		1DC3C5AF268B485900B04775 /* explosion_40.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DC3C572268B485800B04775 /* explosion_40.png */; };
+		1DC3C5B0268B485900B04775 /* warhead_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DC3C573268B485800B04775 /* warhead_5.png */; };
+		1DC3C5B1268B485900B04775 /* explosion_55.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DC3C574268B485800B04775 /* explosion_55.png */; };
+		1DC3C5B2268B485900B04775 /* explosion_100.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DC3C575268B485800B04775 /* explosion_100.png */; };
+		1DC3C5B3268B485900B04775 /* explosion_45.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DC3C576268B485800B04775 /* explosion_45.png */; };
+		1DC3C5B4268B485900B04775 /* blast_item.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DC3C577268B485800B04775 /* blast_item.png */; };
+		1DC3C5B5268B485900B04775 /* explosion_50.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DC3C578268B485800B04775 /* explosion_50.png */; };
+		1DC3C5B6268B485900B04775 /* silo_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DC3C579268B485800B04775 /* silo_3.png */; };
+		1DC3C5B7268B485900B04775 /* silo_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DC3C57A268B485800B04775 /* silo_2.png */; };
+		1DC3C5B8268B485900B04775 /* silo_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DC3C57B268B485800B04775 /* silo_0.png */; };
+		1DC3C5B9268B485900B04775 /* explosion_60.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DC3C57C268B485800B04775 /* explosion_60.png */; };
+		1DC3C5BA268B485900B04775 /* silo_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DC3C57D268B485800B04775 /* silo_1.png */; };
+		1DC3C5BB268B485900B04775 /* reload_item.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DC3C57E268B485800B04775 /* reload_item.png */; };
+		1DC3C5BC268B485900B04775 /* silo_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DC3C57F268B485800B04775 /* silo_5.png */; };
+		1DC3C5BD268B485900B04775 /* explosion_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DC3C580268B485800B04775 /* explosion_65.png */; };
+		1DC3C5BE268B485900B04775 /* velocity_item.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DC3C581268B485800B04775 /* velocity_item.png */; };
+		1DC3C5BF268B485900B04775 /* silo_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DC3C582268B485800B04775 /* silo_4.png */; };
+		1DC3C5C0268B485900B04775 /* ammunition_item.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DC3C583268B485800B04775 /* ammunition_item.png */; };
+		1DC3C5C1268B485900B04775 /* duration_item.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DC3C584268B485800B04775 /* duration_item.png */; };
+		1DC3C5C2268B485900B04775 /* bomber.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DC3C585268B485800B04775 /* bomber.png */; };
+		1DC3C5C3268B485900B04775 /* aim.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DC3C586268B485800B04775 /* aim.png */; };
+		1DC3C5C4268B485900B04775 /* silo_item.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DC3C587268B485800B04775 /* silo_item.png */; };
+		1DC3C5C5268B485900B04775 /* explosion_150.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DC3C588268B485800B04775 /* explosion_150.png */; };
+		1DC3C5C6268B485900B04775 /* PressStart2P-vaV7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1DC3C58A268B485800B04775 /* PressStart2P-vaV7.ttf */; };
+		1DC3C5C7268B485900B04775 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC3C58D268B485800B04775 /* City.swift */; };
+		1DC3C5C8268B485900B04775 /* Silo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC3C58E268B485800B04775 /* Silo.swift */; };
+		1DC3C5C9268B485900B04775 /* Bomber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC3C590268B485800B04775 /* Bomber.swift */; };
+		1DC3C5CA268B485900B04775 /* EnemyWarhead.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC3C592268B485800B04775 /* EnemyWarhead.swift */; };
+		1DC3C5CB268B485900B04775 /* Warhead.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC3C593268B485800B04775 /* Warhead.swift */; };
+		1DC3C5CC268B485900B04775 /* PlayerWarhead.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC3C594268B485800B04775 /* PlayerWarhead.swift */; };
+		1DC3C5CD268B485900B04775 /* VelocityItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC3C596268B485800B04775 /* VelocityItem.swift */; };
+		1DC3C5CE268B485900B04775 /* AmmunitionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC3C597268B485800B04775 /* AmmunitionItem.swift */; };
+		1DC3C5CF268B485900B04775 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC3C598268B485800B04775 /* Item.swift */; };
+		1DC3C5D0268B485900B04775 /* SiloItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC3C599268B485800B04775 /* SiloItem.swift */; };
+		1DC3C5D1268B485900B04775 /* DurationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC3C59A268B485800B04775 /* DurationItem.swift */; };
+		1DC3C5D2268B485900B04775 /* BlastItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC3C59B268B485800B04775 /* BlastItem.swift */; };
+		1DC3C5D3268B485900B04775 /* ReloadItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC3C59C268B485800B04775 /* ReloadItem.swift */; };
+		1DC3C5D4268B485900B04775 /* CityItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC3C59D268B485800B04775 /* CityItem.swift */; };
+		1DC3C5D5268B485900B04775 /* EnemyExplosion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC3C59F268B485800B04775 /* EnemyExplosion.swift */; };
+		1DC3C5D6268B485900B04775 /* Explosion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC3C5A0268B485800B04775 /* Explosion.swift */; };
+		1DC3C5D7268B485900B04775 /* PlayerExplosion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC3C5A1268B485800B04775 /* PlayerExplosion.swift */; };
+		1DC3C5D8268B485900B04775 /* PlayerAim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC3C5A3268B485800B04775 /* PlayerAim.swift */; };
+		1DC3C5DA268B488A00B04775 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC3C5D9268B488A00B04775 /* GameScene.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1DC3C53B268B471D00B04775 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1DC3C52F268B471D00B04775 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1DC3C538268B471D00B04775;
+			remoteInfo = "MissileCommander WatchKit App";
+		};
+		1DC3C54A268B471E00B04775 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1DC3C52F268B471D00B04775 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1DC3C547268B471E00B04775;
+			remoteInfo = "MissileCommander WatchKit Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1DC3C55B268B471F00B04775 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				1DC3C549268B471E00B04775 /* MissileCommander WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1DC3C55F268B471F00B04775 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				1DC3C53A268B471D00B04775 /* MissileCommander WatchKit App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		1DC3C535268B471D00B04775 /* MissileCommander.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MissileCommander.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DC3C539268B471D00B04775 /* MissileCommander WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MissileCommander WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DC3C53F268B471D00B04775 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		1DC3C541268B471E00B04775 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1DC3C543268B471E00B04775 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1DC3C548268B471E00B04775 /* MissileCommander WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "MissileCommander WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DC3C54D268B471E00B04775 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		1DC3C54F268B471E00B04775 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		1DC3C551268B471E00B04775 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		1DC3C553268B471F00B04775 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1DC3C555268B471F00B04775 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1DC3C564268B485800B04775 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		1DC3C565268B485800B04775 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		1DC3C568268B485800B04775 /* friendly_explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = friendly_explosion.wav; sourceTree = "<group>"; };
+		1DC3C569268B485800B04775 /* hostile_explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hostile_explosion.wav; sourceTree = "<group>"; };
+		1DC3C56A268B485800B04775 /* launch.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = launch.wav; sourceTree = "<group>"; };
+		1DC3C56B268B485800B04775 /* item.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = item.wav; sourceTree = "<group>"; };
+		1DC3C56D268B485800B04775 /* warhead_11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = warhead_11.png; sourceTree = "<group>"; };
+		1DC3C56E268B485800B04775 /* city_item.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = city_item.png; sourceTree = "<group>"; };
+		1DC3C56F268B485800B04775 /* city.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = city.png; sourceTree = "<group>"; };
+		1DC3C570268B485800B04775 /* explosion_300.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = explosion_300.png; sourceTree = "<group>"; };
+		1DC3C571268B485800B04775 /* warhead_7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = warhead_7.png; sourceTree = "<group>"; };
+		1DC3C572268B485800B04775 /* explosion_40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = explosion_40.png; sourceTree = "<group>"; };
+		1DC3C573268B485800B04775 /* warhead_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = warhead_5.png; sourceTree = "<group>"; };
+		1DC3C574268B485800B04775 /* explosion_55.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = explosion_55.png; sourceTree = "<group>"; };
+		1DC3C575268B485800B04775 /* explosion_100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = explosion_100.png; sourceTree = "<group>"; };
+		1DC3C576268B485800B04775 /* explosion_45.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = explosion_45.png; sourceTree = "<group>"; };
+		1DC3C577268B485800B04775 /* blast_item.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blast_item.png; sourceTree = "<group>"; };
+		1DC3C578268B485800B04775 /* explosion_50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = explosion_50.png; sourceTree = "<group>"; };
+		1DC3C579268B485800B04775 /* silo_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = silo_3.png; sourceTree = "<group>"; };
+		1DC3C57A268B485800B04775 /* silo_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = silo_2.png; sourceTree = "<group>"; };
+		1DC3C57B268B485800B04775 /* silo_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = silo_0.png; sourceTree = "<group>"; };
+		1DC3C57C268B485800B04775 /* explosion_60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = explosion_60.png; sourceTree = "<group>"; };
+		1DC3C57D268B485800B04775 /* silo_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = silo_1.png; sourceTree = "<group>"; };
+		1DC3C57E268B485800B04775 /* reload_item.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reload_item.png; sourceTree = "<group>"; };
+		1DC3C57F268B485800B04775 /* silo_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = silo_5.png; sourceTree = "<group>"; };
+		1DC3C580268B485800B04775 /* explosion_65.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = explosion_65.png; sourceTree = "<group>"; };
+		1DC3C581268B485800B04775 /* velocity_item.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = velocity_item.png; sourceTree = "<group>"; };
+		1DC3C582268B485800B04775 /* silo_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = silo_4.png; sourceTree = "<group>"; };
+		1DC3C583268B485800B04775 /* ammunition_item.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ammunition_item.png; sourceTree = "<group>"; };
+		1DC3C584268B485800B04775 /* duration_item.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = duration_item.png; sourceTree = "<group>"; };
+		1DC3C585268B485800B04775 /* bomber.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bomber.png; sourceTree = "<group>"; };
+		1DC3C586268B485800B04775 /* aim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aim.png; sourceTree = "<group>"; };
+		1DC3C587268B485800B04775 /* silo_item.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = silo_item.png; sourceTree = "<group>"; };
+		1DC3C588268B485800B04775 /* explosion_150.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = explosion_150.png; sourceTree = "<group>"; };
+		1DC3C58A268B485800B04775 /* PressStart2P-vaV7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PressStart2P-vaV7.ttf"; sourceTree = "<group>"; };
+		1DC3C58D268B485800B04775 /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		1DC3C58E268B485800B04775 /* Silo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Silo.swift; sourceTree = "<group>"; };
+		1DC3C590268B485800B04775 /* Bomber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bomber.swift; sourceTree = "<group>"; };
+		1DC3C592268B485800B04775 /* EnemyWarhead.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyWarhead.swift; sourceTree = "<group>"; };
+		1DC3C593268B485800B04775 /* Warhead.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Warhead.swift; sourceTree = "<group>"; };
+		1DC3C594268B485800B04775 /* PlayerWarhead.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerWarhead.swift; sourceTree = "<group>"; };
+		1DC3C596268B485800B04775 /* VelocityItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VelocityItem.swift; sourceTree = "<group>"; };
+		1DC3C597268B485800B04775 /* AmmunitionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmmunitionItem.swift; sourceTree = "<group>"; };
+		1DC3C598268B485800B04775 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		1DC3C599268B485800B04775 /* SiloItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiloItem.swift; sourceTree = "<group>"; };
+		1DC3C59A268B485800B04775 /* DurationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DurationItem.swift; sourceTree = "<group>"; };
+		1DC3C59B268B485800B04775 /* BlastItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlastItem.swift; sourceTree = "<group>"; };
+		1DC3C59C268B485800B04775 /* ReloadItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReloadItem.swift; sourceTree = "<group>"; };
+		1DC3C59D268B485800B04775 /* CityItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityItem.swift; sourceTree = "<group>"; };
+		1DC3C59F268B485800B04775 /* EnemyExplosion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyExplosion.swift; sourceTree = "<group>"; };
+		1DC3C5A0268B485800B04775 /* Explosion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Explosion.swift; sourceTree = "<group>"; };
+		1DC3C5A1268B485800B04775 /* PlayerExplosion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerExplosion.swift; sourceTree = "<group>"; };
+		1DC3C5A3268B485800B04775 /* PlayerAim.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerAim.swift; sourceTree = "<group>"; };
+		1DC3C5D9268B488A00B04775 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1DC3C545268B471E00B04775 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1DC3C52E268B471D00B04775 = {
+			isa = PBXGroup;
+			children = (
+				1DC3C53D268B471D00B04775 /* MissileCommander WatchKit App */,
+				1DC3C54C268B471E00B04775 /* MissileCommander WatchKit Extension */,
+				1DC3C536268B471D00B04775 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1DC3C536268B471D00B04775 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1DC3C535268B471D00B04775 /* MissileCommander.app */,
+				1DC3C539268B471D00B04775 /* MissileCommander WatchKit App.app */,
+				1DC3C548268B471E00B04775 /* MissileCommander WatchKit Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1DC3C53D268B471D00B04775 /* MissileCommander WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				1DC3C53E268B471D00B04775 /* Interface.storyboard */,
+				1DC3C541268B471E00B04775 /* Assets.xcassets */,
+				1DC3C543268B471E00B04775 /* Info.plist */,
+			);
+			path = "MissileCommander WatchKit App";
+			sourceTree = "<group>";
+		};
+		1DC3C54C268B471E00B04775 /* MissileCommander WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				1DC3C566268B485800B04775 /* Resources */,
+				1DC3C58B268B485800B04775 /* Sprites */,
+				1DC3C563268B485800B04775 /* Utils */,
+				1DC3C54D268B471E00B04775 /* InterfaceController.swift */,
+				1DC3C5D9268B488A00B04775 /* GameScene.swift */,
+				1DC3C54F268B471E00B04775 /* ExtensionDelegate.swift */,
+				1DC3C551268B471E00B04775 /* ComplicationController.swift */,
+				1DC3C553268B471F00B04775 /* Assets.xcassets */,
+				1DC3C555268B471F00B04775 /* Info.plist */,
+			);
+			path = "MissileCommander WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		1DC3C563268B485800B04775 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				1DC3C564268B485800B04775 /* Constants.swift */,
+				1DC3C565268B485800B04775 /* Utils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		1DC3C566268B485800B04775 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1DC3C567268B485800B04775 /* Audio */,
+				1DC3C56C268B485800B04775 /* Sprite */,
+				1DC3C589268B485800B04775 /* Font */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		1DC3C567268B485800B04775 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				1DC3C568268B485800B04775 /* friendly_explosion.wav */,
+				1DC3C569268B485800B04775 /* hostile_explosion.wav */,
+				1DC3C56A268B485800B04775 /* launch.wav */,
+				1DC3C56B268B485800B04775 /* item.wav */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
+		1DC3C56C268B485800B04775 /* Sprite */ = {
+			isa = PBXGroup;
+			children = (
+				1DC3C56D268B485800B04775 /* warhead_11.png */,
+				1DC3C56E268B485800B04775 /* city_item.png */,
+				1DC3C56F268B485800B04775 /* city.png */,
+				1DC3C570268B485800B04775 /* explosion_300.png */,
+				1DC3C571268B485800B04775 /* warhead_7.png */,
+				1DC3C572268B485800B04775 /* explosion_40.png */,
+				1DC3C573268B485800B04775 /* warhead_5.png */,
+				1DC3C574268B485800B04775 /* explosion_55.png */,
+				1DC3C575268B485800B04775 /* explosion_100.png */,
+				1DC3C576268B485800B04775 /* explosion_45.png */,
+				1DC3C577268B485800B04775 /* blast_item.png */,
+				1DC3C578268B485800B04775 /* explosion_50.png */,
+				1DC3C579268B485800B04775 /* silo_3.png */,
+				1DC3C57A268B485800B04775 /* silo_2.png */,
+				1DC3C57B268B485800B04775 /* silo_0.png */,
+				1DC3C57C268B485800B04775 /* explosion_60.png */,
+				1DC3C57D268B485800B04775 /* silo_1.png */,
+				1DC3C57E268B485800B04775 /* reload_item.png */,
+				1DC3C57F268B485800B04775 /* silo_5.png */,
+				1DC3C580268B485800B04775 /* explosion_65.png */,
+				1DC3C581268B485800B04775 /* velocity_item.png */,
+				1DC3C582268B485800B04775 /* silo_4.png */,
+				1DC3C583268B485800B04775 /* ammunition_item.png */,
+				1DC3C584268B485800B04775 /* duration_item.png */,
+				1DC3C585268B485800B04775 /* bomber.png */,
+				1DC3C586268B485800B04775 /* aim.png */,
+				1DC3C587268B485800B04775 /* silo_item.png */,
+				1DC3C588268B485800B04775 /* explosion_150.png */,
+			);
+			path = Sprite;
+			sourceTree = "<group>";
+		};
+		1DC3C589268B485800B04775 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				1DC3C58A268B485800B04775 /* PressStart2P-vaV7.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		1DC3C58B268B485800B04775 /* Sprites */ = {
+			isa = PBXGroup;
+			children = (
+				1DC3C58C268B485800B04775 /* Buildings */,
+				1DC3C58F268B485800B04775 /* Enemy */,
+				1DC3C591268B485800B04775 /* Warheads */,
+				1DC3C595268B485800B04775 /* Items */,
+				1DC3C59E268B485800B04775 /* Effects */,
+				1DC3C5A2268B485800B04775 /* Player */,
+			);
+			path = Sprites;
+			sourceTree = "<group>";
+		};
+		1DC3C58C268B485800B04775 /* Buildings */ = {
+			isa = PBXGroup;
+			children = (
+				1DC3C58D268B485800B04775 /* City.swift */,
+				1DC3C58E268B485800B04775 /* Silo.swift */,
+			);
+			path = Buildings;
+			sourceTree = "<group>";
+		};
+		1DC3C58F268B485800B04775 /* Enemy */ = {
+			isa = PBXGroup;
+			children = (
+				1DC3C590268B485800B04775 /* Bomber.swift */,
+			);
+			path = Enemy;
+			sourceTree = "<group>";
+		};
+		1DC3C591268B485800B04775 /* Warheads */ = {
+			isa = PBXGroup;
+			children = (
+				1DC3C592268B485800B04775 /* EnemyWarhead.swift */,
+				1DC3C593268B485800B04775 /* Warhead.swift */,
+				1DC3C594268B485800B04775 /* PlayerWarhead.swift */,
+			);
+			path = Warheads;
+			sourceTree = "<group>";
+		};
+		1DC3C595268B485800B04775 /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				1DC3C596268B485800B04775 /* VelocityItem.swift */,
+				1DC3C597268B485800B04775 /* AmmunitionItem.swift */,
+				1DC3C598268B485800B04775 /* Item.swift */,
+				1DC3C599268B485800B04775 /* SiloItem.swift */,
+				1DC3C59A268B485800B04775 /* DurationItem.swift */,
+				1DC3C59B268B485800B04775 /* BlastItem.swift */,
+				1DC3C59C268B485800B04775 /* ReloadItem.swift */,
+				1DC3C59D268B485800B04775 /* CityItem.swift */,
+			);
+			path = Items;
+			sourceTree = "<group>";
+		};
+		1DC3C59E268B485800B04775 /* Effects */ = {
+			isa = PBXGroup;
+			children = (
+				1DC3C59F268B485800B04775 /* EnemyExplosion.swift */,
+				1DC3C5A0268B485800B04775 /* Explosion.swift */,
+				1DC3C5A1268B485800B04775 /* PlayerExplosion.swift */,
+			);
+			path = Effects;
+			sourceTree = "<group>";
+		};
+		1DC3C5A2268B485800B04775 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				1DC3C5A3268B485800B04775 /* PlayerAim.swift */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1DC3C534268B471D00B04775 /* MissileCommander */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DC3C560268B471F00B04775 /* Build configuration list for PBXNativeTarget "MissileCommander" */;
+			buildPhases = (
+				1DC3C533268B471D00B04775 /* Resources */,
+				1DC3C55F268B471F00B04775 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1DC3C53C268B471D00B04775 /* PBXTargetDependency */,
+			);
+			name = MissileCommander;
+			productName = MissileCommander;
+			productReference = 1DC3C535268B471D00B04775 /* MissileCommander.app */;
+			productType = "com.apple.product-type.application.watchapp2-container";
+		};
+		1DC3C538268B471D00B04775 /* MissileCommander WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DC3C55C268B471F00B04775 /* Build configuration list for PBXNativeTarget "MissileCommander WatchKit App" */;
+			buildPhases = (
+				1DC3C537268B471D00B04775 /* Resources */,
+				1DC3C55B268B471F00B04775 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1DC3C54B268B471E00B04775 /* PBXTargetDependency */,
+			);
+			name = "MissileCommander WatchKit App";
+			productName = "MissileCommander WatchKit App";
+			productReference = 1DC3C539268B471D00B04775 /* MissileCommander WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		1DC3C547268B471E00B04775 /* MissileCommander WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DC3C558268B471F00B04775 /* Build configuration list for PBXNativeTarget "MissileCommander WatchKit Extension" */;
+			buildPhases = (
+				1DC3C544268B471E00B04775 /* Sources */,
+				1DC3C545268B471E00B04775 /* Frameworks */,
+				1DC3C546268B471E00B04775 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MissileCommander WatchKit Extension";
+			productName = "MissileCommander WatchKit Extension";
+			productReference = 1DC3C548268B471E00B04775 /* MissileCommander WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1DC3C52F268B471D00B04775 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					1DC3C534268B471D00B04775 = {
+						CreatedOnToolsVersion = 12.5;
+					};
+					1DC3C538268B471D00B04775 = {
+						CreatedOnToolsVersion = 12.5;
+					};
+					1DC3C547268B471E00B04775 = {
+						CreatedOnToolsVersion = 12.5;
+					};
+				};
+			};
+			buildConfigurationList = 1DC3C532268B471D00B04775 /* Build configuration list for PBXProject "MissileCommander" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1DC3C52E268B471D00B04775;
+			productRefGroup = 1DC3C536268B471D00B04775 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1DC3C534268B471D00B04775 /* MissileCommander */,
+				1DC3C538268B471D00B04775 /* MissileCommander WatchKit App */,
+				1DC3C547268B471E00B04775 /* MissileCommander WatchKit Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1DC3C533268B471D00B04775 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1DC3C537268B471D00B04775 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1DC3C542268B471E00B04775 /* Assets.xcassets in Resources */,
+				1DC3C540268B471D00B04775 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1DC3C546268B471E00B04775 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1DC3C5BF268B485900B04775 /* silo_4.png in Resources */,
+				1DC3C5BA268B485900B04775 /* silo_1.png in Resources */,
+				1DC3C5B5268B485900B04775 /* explosion_50.png in Resources */,
+				1DC3C5C6268B485900B04775 /* PressStart2P-vaV7.ttf in Resources */,
+				1DC3C5B0268B485900B04775 /* warhead_5.png in Resources */,
+				1DC3C5B7268B485900B04775 /* silo_2.png in Resources */,
+				1DC3C5C4268B485900B04775 /* silo_item.png in Resources */,
+				1DC3C5B8268B485900B04775 /* silo_0.png in Resources */,
+				1DC3C5AE268B485900B04775 /* warhead_7.png in Resources */,
+				1DC3C5A9268B485900B04775 /* item.wav in Resources */,
+				1DC3C5B6268B485900B04775 /* silo_3.png in Resources */,
+				1DC3C5C1268B485900B04775 /* duration_item.png in Resources */,
+				1DC3C5C5268B485900B04775 /* explosion_150.png in Resources */,
+				1DC3C5BC268B485900B04775 /* silo_5.png in Resources */,
+				1DC3C5B3268B485900B04775 /* explosion_45.png in Resources */,
+				1DC3C5AF268B485900B04775 /* explosion_40.png in Resources */,
+				1DC3C5C3268B485900B04775 /* aim.png in Resources */,
+				1DC3C5B4268B485900B04775 /* blast_item.png in Resources */,
+				1DC3C5B1268B485900B04775 /* explosion_55.png in Resources */,
+				1DC3C5B2268B485900B04775 /* explosion_100.png in Resources */,
+				1DC3C5BB268B485900B04775 /* reload_item.png in Resources */,
+				1DC3C5AB268B485900B04775 /* city_item.png in Resources */,
+				1DC3C5AD268B485900B04775 /* explosion_300.png in Resources */,
+				1DC3C554268B471F00B04775 /* Assets.xcassets in Resources */,
+				1DC3C5C2268B485900B04775 /* bomber.png in Resources */,
+				1DC3C5A8268B485900B04775 /* launch.wav in Resources */,
+				1DC3C5AC268B485900B04775 /* city.png in Resources */,
+				1DC3C5C0268B485900B04775 /* ammunition_item.png in Resources */,
+				1DC3C5A7268B485900B04775 /* hostile_explosion.wav in Resources */,
+				1DC3C5B9268B485900B04775 /* explosion_60.png in Resources */,
+				1DC3C5AA268B485900B04775 /* warhead_11.png in Resources */,
+				1DC3C5BD268B485900B04775 /* explosion_65.png in Resources */,
+				1DC3C5A6268B485900B04775 /* friendly_explosion.wav in Resources */,
+				1DC3C5BE268B485900B04775 /* velocity_item.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1DC3C544268B471E00B04775 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1DC3C5A5268B485900B04775 /* Utils.swift in Sources */,
+				1DC3C5D6268B485900B04775 /* Explosion.swift in Sources */,
+				1DC3C5D3268B485900B04775 /* ReloadItem.swift in Sources */,
+				1DC3C5C8268B485900B04775 /* Silo.swift in Sources */,
+				1DC3C5D1268B485900B04775 /* DurationItem.swift in Sources */,
+				1DC3C550268B471E00B04775 /* ExtensionDelegate.swift in Sources */,
+				1DC3C5CA268B485900B04775 /* EnemyWarhead.swift in Sources */,
+				1DC3C5CF268B485900B04775 /* Item.swift in Sources */,
+				1DC3C5CE268B485900B04775 /* AmmunitionItem.swift in Sources */,
+				1DC3C5CC268B485900B04775 /* PlayerWarhead.swift in Sources */,
+				1DC3C5C7268B485900B04775 /* City.swift in Sources */,
+				1DC3C5D2268B485900B04775 /* BlastItem.swift in Sources */,
+				1DC3C54E268B471E00B04775 /* InterfaceController.swift in Sources */,
+				1DC3C5CD268B485900B04775 /* VelocityItem.swift in Sources */,
+				1DC3C552268B471E00B04775 /* ComplicationController.swift in Sources */,
+				1DC3C5D5268B485900B04775 /* EnemyExplosion.swift in Sources */,
+				1DC3C5D7268B485900B04775 /* PlayerExplosion.swift in Sources */,
+				1DC3C5D8268B485900B04775 /* PlayerAim.swift in Sources */,
+				1DC3C5DA268B488A00B04775 /* GameScene.swift in Sources */,
+				1DC3C5D4268B485900B04775 /* CityItem.swift in Sources */,
+				1DC3C5D0268B485900B04775 /* SiloItem.swift in Sources */,
+				1DC3C5C9268B485900B04775 /* Bomber.swift in Sources */,
+				1DC3C5CB268B485900B04775 /* Warhead.swift in Sources */,
+				1DC3C5A4268B485900B04775 /* Constants.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1DC3C53C268B471D00B04775 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1DC3C538268B471D00B04775 /* MissileCommander WatchKit App */;
+			targetProxy = 1DC3C53B268B471D00B04775 /* PBXContainerItemProxy */;
+		};
+		1DC3C54B268B471E00B04775 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1DC3C547268B471E00B04775 /* MissileCommander WatchKit Extension */;
+			targetProxy = 1DC3C54A268B471E00B04775 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1DC3C53E268B471D00B04775 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1DC3C53F268B471D00B04775 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1DC3C556268B471F00B04775 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1DC3C557268B471F00B04775 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1DC3C559268B471F00B04775 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5HZQ3M82FA;
+				INFOPLIST_FILE = "MissileCommander WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Seunghun.MissileCommander.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.4;
+			};
+			name = Debug;
+		};
+		1DC3C55A268B471F00B04775 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5HZQ3M82FA;
+				INFOPLIST_FILE = "MissileCommander WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Seunghun.MissileCommander.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.4;
+			};
+			name = Release;
+		};
+		1DC3C55D268B471F00B04775 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5HZQ3M82FA;
+				IBSC_MODULE = MissileCommander_WatchKit_Extension;
+				INFOPLIST_FILE = "MissileCommander WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = Seunghun.MissileCommander.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.4;
+			};
+			name = Debug;
+		};
+		1DC3C55E268B471F00B04775 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5HZQ3M82FA;
+				IBSC_MODULE = MissileCommander_WatchKit_Extension;
+				INFOPLIST_FILE = "MissileCommander WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = Seunghun.MissileCommander.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.4;
+			};
+			name = Release;
+		};
+		1DC3C561268B471F00B04775 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5HZQ3M82FA;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Seunghun.MissileCommander;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		1DC3C562268B471F00B04775 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5HZQ3M82FA;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Seunghun.MissileCommander;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DC3C532268B471D00B04775 /* Build configuration list for PBXProject "MissileCommander" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DC3C556268B471F00B04775 /* Debug */,
+				1DC3C557268B471F00B04775 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DC3C558268B471F00B04775 /* Build configuration list for PBXNativeTarget "MissileCommander WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DC3C559268B471F00B04775 /* Debug */,
+				1DC3C55A268B471F00B04775 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DC3C55C268B471F00B04775 /* Build configuration list for PBXNativeTarget "MissileCommander WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DC3C55D268B471F00B04775 /* Debug */,
+				1DC3C55E268B471F00B04775 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DC3C560268B471F00B04775 /* Build configuration list for PBXNativeTarget "MissileCommander" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DC3C561268B471F00B04775 /* Debug */,
+				1DC3C562268B471F00B04775 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1DC3C52F268B471D00B04775 /* Project object */;
+}
