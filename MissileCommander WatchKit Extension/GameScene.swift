@@ -84,7 +84,7 @@ public class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     // MARK: - Game Status
-    private var isGameOver: Bool = false
+    var isGameOver: Bool = false
     private var explosionChainingDelay: Double = 0.2
     
     private var isWarheadRaidOn: Bool = false
@@ -485,15 +485,10 @@ public class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // MARK: - Player click input
     func touched(location: CGPoint) {
-        let touchedNode = atPoint(location)
-        if touchedNode.name == "retryLabel" {
-            startNewGame()
-        } else {
-            guard let closestAvailableSiloInfo = getClosestAvailableSiloInfo(targetCoordinate: location) else { return }
-            let silo = closestAvailableSiloInfo.0
-            let distance = closestAvailableSiloInfo.1
-            silo.shoot(coordinate: location, distance: distance)
-        }
+        guard let closestAvailableSiloInfo = getClosestAvailableSiloInfo(targetCoordinate: location) else { return }
+        let silo = closestAvailableSiloInfo.0
+        let distance = closestAvailableSiloInfo.1
+        silo.shoot(coordinate: location, distance: distance)
     }
     
     // MARK: - Building related methods
@@ -569,7 +564,6 @@ public class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func gameOver() {
-        self.isGameOver = true
         self.removeAction(forKey: "countSeconds")
         self.setTimeLabel(alwaysDisplayColon: true)
         if isWarheadRaidOn { self.warheadRaidTimer.invalidate() }
@@ -715,14 +709,17 @@ public class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func generateRetryButtonLabel() {
         let retryLabel = SKLabelNode(fontNamed: "PressStart2P")
-        retryLabel.text = "Press here to try again"
+        retryLabel.text = "Tap anywhere to try again"
         retryLabel.name = "retryLabel"
         retryLabel.fontSize = 10
         retryLabel.fontColor = .yellow
         retryLabel.position = CGPoint(x: frame.midX, y: frame.midY - 20)
         retryLabel.zPosition = 100
         let wait = SKAction.wait(forDuration: 4)
-        let add = SKAction.run { self.addChild(retryLabel) }
+        let add = SKAction.run {
+            self.addChild(retryLabel)
+            self.isGameOver = true
+        }
         self.run(SKAction.sequence([wait, add]))
     }
     
