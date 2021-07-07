@@ -2,7 +2,7 @@ import SpriteKit
 
 public class ReloadItem: Item {
     init(position: CGPoint, mutateCount: Int = 0, gameScene: SKScene) {
-        super.init(texture: SKTexture(imageNamed: "reload_item.png"), position: position, mutateCount: mutateCount, gameScene: gameScene)
+        super.init(texture: SKTexture(image: UIImage(imageLiteralResourceName: "reload_item.png")), position: position, mutateCount: mutateCount, gameScene: gameScene)
         
         self.physicsBody?.categoryBitMask = reloadItemCategory
         

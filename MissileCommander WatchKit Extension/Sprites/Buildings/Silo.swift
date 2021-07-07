@@ -14,7 +14,7 @@ public class Silo: SKSpriteNode{
     init(position: CGPoint, gameScene: GameScene) {
         self.gameScene = gameScene
         self.numOfLoadedMissiles = self.gameScene.getMissileCapacity()
-        super.init(texture: SKTexture(imageNamed: "silo_\(self.numOfLoadedMissiles).png"), color: .clear, size: CGSize(width: 30, height: 30))
+        super.init(texture: SKTexture(image: UIImage(imageLiteralResourceName: "silo_\(self.numOfLoadedMissiles).png")), color: .clear, size: CGSize(width: 30, height: 30))
         self.position = position
         
         self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
@@ -35,7 +35,7 @@ public class Silo: SKSpriteNode{
     }
     
     func changeTexture() {
-        let siloTexture = SKTexture(imageNamed: "silo_\(numOfLoadedMissiles).png")
+        let siloTexture = SKTexture(image: UIImage(imageLiteralResourceName: "silo_\(numOfLoadedMissiles).png"))
         let action = SKAction.setTexture(siloTexture, resize: false)
         self.run(action)
     }

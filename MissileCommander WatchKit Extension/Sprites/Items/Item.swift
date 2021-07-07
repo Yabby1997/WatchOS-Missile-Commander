@@ -4,7 +4,7 @@ public class Item: SKSpriteNode {
     let gameScene: SKScene
     var mutateCount: Int
     
-    public init(texture: SKTexture = SKTexture(imageNamed: "ammunition.png"), position: CGPoint, mutateCount: Int = -1, gameScene: SKScene) {
+    public init(texture: SKTexture = SKTexture(image: UIImage(imageLiteralResourceName: "ammunition.png")), position: CGPoint, mutateCount: Int = -1, gameScene: SKScene) {
         self.gameScene = gameScene
         self.mutateCount = mutateCount
         super.init(texture: texture, color: .clear, size: CGSize(width: 30, height: 30))

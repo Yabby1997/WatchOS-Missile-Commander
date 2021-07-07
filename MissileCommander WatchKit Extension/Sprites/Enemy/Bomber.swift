@@ -6,7 +6,7 @@ public class Bomber: SKSpriteNode {
     public init(yPosition: CGFloat, fromRight: Bool, flightTime: Double, bombingDuration: Double, blastRange: Int, gameScene: GameScene) {
         self.gameScene = gameScene
         
-        super.init(texture: SKTexture(imageNamed: "Sprite/bomber.png"), color: .clear, size: CGSize(width: 50, height: 30))
+        super.init(texture: SKTexture(image: UIImage(imageLiteralResourceName: "bomber.png")), color: .clear, size: CGSize(width: 50, height: 30))
         self.color = .red
         self.colorBlendFactor = 1.0
         if !fromRight {
