@@ -16,7 +16,7 @@ public class Warhead: SKSpriteNode {
         
         let warheadSize = getWarheadSize(blastRange: self.blastRange)
         
-        super.init(texture: SKTexture(imageNamed: "warhead_\(warheadSize).png"), color: .clear, size: CGSize(width: warheadSize, height: warheadSize))
+        super.init(texture: SKTexture(image: UIImage(imageLiteralResourceName: "warhead_\(warheadSize).png")), color: .clear, size: CGSize(width: warheadSize, height: warheadSize))
         
         self.zPosition = -10
         self.position = position

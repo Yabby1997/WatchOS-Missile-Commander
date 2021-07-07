@@ -3,7 +3,7 @@ import SpriteKit
 
 public class City: SKSpriteNode {
     init(position: CGPoint) {
-        super.init(texture: SKTexture(imageNamed: "city.png"), color: .clear, size: CGSize(width: 30, height: 30))
+        super.init(texture: SKTexture(image: UIImage(imageLiteralResourceName: "city.png")), color: .clear, size: CGSize(width: 30, height: 30))
         self.position = position
         self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
         self.physicsBody?.affectedByGravity = false

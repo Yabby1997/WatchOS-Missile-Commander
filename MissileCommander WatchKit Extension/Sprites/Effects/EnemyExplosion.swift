@@ -1,7 +1,7 @@
 import SpriteKit
 
 public class EnemyExplosion: Explosion {
-    let explosionSound = soundPlayer(sound: "hostile_explosion.wav")
+    let explosionSound = soundPlayer(sound: "hostile_explosion")
     let chainingCombo: Int
     
     init(position: CGPoint, blastRange: Int, chainingCombo: Int, gameScene: GameScene) {
