@@ -1,7 +1,7 @@
 import SpriteKit
 
 public class PlayerWarhead: Warhead {
-    let missileLaunchSound = soundPlayer(sound: "launch.wav")
+    let missileLaunchSound = soundPlayer(sound: "launch")
     
     override init(position: CGPoint, distance: CGFloat, velocity: CGFloat, targetCoordinate: CGPoint, blastRange: Int, gameScene: GameScene) {
         super.init(position: position, distance: distance, velocity: velocity, targetCoordinate: targetCoordinate, blastRange: blastRange, gameScene: gameScene)

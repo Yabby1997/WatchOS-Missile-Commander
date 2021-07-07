@@ -3,7 +3,7 @@ import SpriteKit
 public class PlayerAim: SKSpriteNode {
     
     public init(position: CGPoint, duration: TimeInterval) {
-        super.init(texture: SKTexture(imageNamed: "aim.png"), color: .clear, size: CGSize(width: 15, height: 15))
+        super.init(texture: SKTexture(image: UIImage(imageLiteralResourceName: "aim.png")), color: .clear, size: CGSize(width: 15, height: 15))
         self.position = position
         self.zPosition = 10
         

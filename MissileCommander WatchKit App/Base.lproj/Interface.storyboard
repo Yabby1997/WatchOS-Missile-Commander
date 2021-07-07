@@ -9,9 +9,17 @@
         <!--Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="MissileCommander_WatchKit_App" customModuleProvider="target">
+                <controller fullScreen="YES" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="MissileCommander_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <spriteKitScene alignment="left" id="LHb-vD-nng"/>
+                        <spriteKitScene alignment="left" id="LHb-vD-nng">
+                            <gestureRecognizers>
+                                <tapGestureRecognizer id="uyV-jb-919">
+                                    <connections>
+                                        <action selector="handleGestureWithGestureRecognizer:" destination="AgC-eL-Hgc" id="WZP-vc-xAA"/>
+                                    </connections>
+                                </tapGestureRecognizer>
+                            </gestureRecognizers>
+                        </spriteKitScene>
                     </items>
                     <connections>
                         <outlet property="skView" destination="LHb-vD-nng" id="4c5-M4-DgG"/>

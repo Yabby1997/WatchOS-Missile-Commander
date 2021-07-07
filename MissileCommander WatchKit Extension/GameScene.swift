@@ -11,22 +11,20 @@ import WatchKit
 public class GameScene: SKScene, SKPhysicsContactDelegate {
     // MARK: - Labels
     
-    let tapGesture: WKTapGestureRecognizer = WKTapGestureRecognizer()
-    
     lazy var scoreLabel: SKLabelNode = {
         let label = SKLabelNode(fontNamed: "PressStart2P")
-        label.fontSize = 20
+        label.fontSize = 30
         label.fontColor = SKColor.white
-        label.position = CGPoint(x: self.frame.midX, y: 440)
+        label.position = CGPoint(x: self.frame.midX, y: 520)
         label.zPosition = 50
         return label
     }()
     
     lazy var timeLabel: SKLabelNode = {
         let label = SKLabelNode(fontNamed: "PressStart2P")
-        label.fontSize = 20
+        label.fontSize = 30
         label.fontColor = SKColor.white
-        label.position = CGPoint(x: self.frame.midX, y: 470)
+        label.position = CGPoint(x: self.frame.midX, y: 560)
         label.zPosition = 50
         let countOneSecond = SKAction.run { self.time = self.time + 1 }
         let waitOneSecond = SKAction.wait(forDuration: 1)
@@ -86,7 +84,7 @@ public class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     // MARK: - Game Status
-    private var isGameOver: Bool = false
+    var isGameOver: Bool = false
     private var explosionChainingDelay: Double = 0.2
     
     private var isWarheadRaidOn: Bool = false
@@ -215,21 +213,6 @@ public class GameScene: SKScene, SKPhysicsContactDelegate {
         self.playerScore = 0
         self.time = 0
     }
-//    public override func didMove(to view: SKView) {
-//        physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
-//        physicsBody?.friction = 0.0
-//
-//        self.backgroundColor = .black
-//        self.physicsWorld.contactDelegate = self
-//
-//        self.addChild(self.scoreLabel)
-//        self.addChild(self.timeLabel)
-//        generateSilos()
-//        generateCities()
-//
-//        self.playerScore = 0
-//        self.time = 0
-//    }
     
     // MARK: - Collision
     public func didBegin(_ contact: SKPhysicsContact) {
@@ -486,33 +469,12 @@ public class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     // MARK: - Player click input
-    @IBAction func handleGesture(gestureRecognizer: WKGestureRecognizer) {
-        let location = tapGesture.locationInObject()
-        let touchedNode = atPoint(location)
-        if touchedNode.name == "retryLabel" {
-            startNewGame()
-        } else {
-            guard let closestAvailableSiloInfo = getClosestAvailableSiloInfo(targetCoordinate: location) else { return }
-            let silo = closestAvailableSiloInfo.0
-            let distance = closestAvailableSiloInfo.1
-            silo.shoot(coordinate: location, distance: distance)
-        }
+    func touched(location: CGPoint) {
+        guard let closestAvailableSiloInfo = getClosestAvailableSiloInfo(targetCoordinate: location) else { return }
+        let silo = closestAvailableSiloInfo.0
+        let distance = closestAvailableSiloInfo.1
+        silo.shoot(coordinate: location, distance: distance)
     }
-    
-//    public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        for touch: AnyObject in touches {
-//            let location = touch.location(in: self)
-//            let touchedNode = atPoint(location)
-//            if touchedNode.name == "retryLabel" {
-//                startNewGame()
-//            } else {
-//                guard let closestAvailableSiloInfo = getClosestAvailableSiloInfo(targetCoordinate: location) else { return }
-//                let silo = closestAvailableSiloInfo.0
-//                let distance = closestAvailableSiloInfo.1
-//                silo.shoot(coordinate: location, distance: distance)
-//            }
-//        }
-//    }
     
     // MARK: - Building related methods
     func getClosestAvailableSiloInfo(targetCoordinate: CGPoint) -> (Silo, CGFloat)? {
@@ -560,7 +522,7 @@ public class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // MARK: - Game related methods
     func calculateActualCoordinateOfLocation(location: Int, usePreciseLocation: Bool = true) -> CGPoint {
-        let xCoordinate = CGFloat(location * 60) + (usePreciseLocation ? 0 : CGFloat.random(in: -30...30))
+        let xCoordinate = CGFloat(location * 50) + (usePreciseLocation ? 0 : CGFloat.random(in: -30...30))
         let yCoordinate = CGFloat(25)
         return CGPoint(x: xCoordinate, y: yCoordinate)
     }
@@ -587,7 +549,6 @@ public class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func gameOver() {
-        self.isGameOver = true
         self.removeAction(forKey: "countSeconds")
         self.setTimeLabel(alwaysDisplayColon: true)
         if isWarheadRaidOn { self.warheadRaidTimer.invalidate() }
@@ -678,7 +639,7 @@ public class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func generateRandomItem(position: CGPoint = CGPoint(x: CGFloat.random(in: 100...500), y: CGFloat.random(in: 100...400))) {
+    func generateRandomItem(position: CGPoint = CGPoint(x: CGFloat.random(in: 100...400), y: CGFloat.random(in: 100...500))) {
         let randomPick = Int.random(in: 1...7)
         var randomItem: Item?
         switch randomPick {
@@ -706,7 +667,7 @@ public class GameScene: SKScene, SKPhysicsContactDelegate {
     func generateGameOverLabel() {
         let gameOverLabel = SKLabelNode(fontNamed: "PressStart2P")
         gameOverLabel.text = "GAME OVER"
-        gameOverLabel.fontSize = 30
+        gameOverLabel.fontSize = 40
         gameOverLabel.fontColor = .white
         gameOverLabel.position = CGPoint(x: frame.midX, y: frame.midY)
         gameOverLabel.zPosition = 100
@@ -718,7 +679,7 @@ public class GameScene: SKScene, SKPhysicsContactDelegate {
     func generateDifficultyLabel(text: String, fontColor: UIColor) {
         let difficultyLabel = SKLabelNode(fontNamed: "PressStart2P")
         difficultyLabel.text = text
-        difficultyLabel.fontSize = 30
+        difficultyLabel.fontSize = 40
         difficultyLabel.fontColor = fontColor
         difficultyLabel.position = CGPoint(x: frame.midX, y: frame.midY)
         difficultyLabel.zPosition = 100
@@ -733,14 +694,17 @@ public class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func generateRetryButtonLabel() {
         let retryLabel = SKLabelNode(fontNamed: "PressStart2P")
-        retryLabel.text = "Press here to try again"
+        retryLabel.text = "Tap to try again"
         retryLabel.name = "retryLabel"
-        retryLabel.fontSize = 10
+        retryLabel.fontSize = 20
         retryLabel.fontColor = .yellow
-        retryLabel.position = CGPoint(x: frame.midX, y: frame.midY - 20)
+        retryLabel.position = CGPoint(x: frame.midX, y: frame.midY - 30)
         retryLabel.zPosition = 100
         let wait = SKAction.wait(forDuration: 4)
-        let add = SKAction.run { self.addChild(retryLabel) }
+        let add = SKAction.run {
+            self.addChild(retryLabel)
+            self.isGameOver = true
+        }
         self.run(SKAction.sequence([wait, add]))
     }
     
@@ -748,7 +712,7 @@ public class GameScene: SKScene, SKPhysicsContactDelegate {
         if combo != 0 {
             let comboLabel = SKLabelNode(fontNamed: "PressStart2P")
             comboLabel.text = combo == 1 ? "\(combo) COMBO" : "\(combo) COMBOS"
-            comboLabel.fontSize = 12
+            comboLabel.fontSize = 15
             comboLabel.fontColor = combo < 5 ? SKColor.yellow : SKColor.red
             comboLabel.position = CGPoint(x: position.x, y: position.y + CGFloat(range / 2))
             comboLabel.zPosition = 1
@@ -763,7 +727,7 @@ public class GameScene: SKScene, SKPhysicsContactDelegate {
     func generateItemLabel(upgradable: Bool, itemName: String, color: SKColor, position: CGPoint, range: Int) {
         let comboLabel = SKLabelNode(fontNamed: "PressStart2P")
         comboLabel.text = "+\(upgradable ? itemName : String(GameScene.itemScore))"
-        comboLabel.fontSize = 12
+        comboLabel.fontSize = 15
         comboLabel.fontColor = color
         comboLabel.position = CGPoint(x: position.x, y: position.y + CGFloat(range / 2))
         comboLabel.zPosition = 1
@@ -782,8 +746,8 @@ public class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             
             let to = self.calculateActualCoordinateOfLocation(location: randomTargetLocation, usePreciseLocation: false)
-            let fromX = Int.random(in: 1...600)
-            let from = CGPoint(x: fromX, y: 500)
+            let fromX = Int.random(in: 1...500)
+            let from = CGPoint(x: fromX, y: 600)
             
             let distance = getDistance(from: from, to: to)
             let velocity = CGFloat(self.enemyWarheadVelocityCandidates.randomElement()!)
@@ -812,8 +776,8 @@ public class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             
             let to = self.calculateActualCoordinateOfLocation(location: randomTargetLocation, usePreciseLocation: false)
-            let fromX = Int.random(in: 1...600)
-            let from = CGPoint(x: fromX, y: 500)
+            let fromX = Int.random(in: 1...500)
+            let from = CGPoint(x: fromX, y: 600)
             
             let distance = getDistance(from: from, to: to)
             let velocity = CGFloat(self.enemyWarheadVelocityCandidates.randomElement()!)

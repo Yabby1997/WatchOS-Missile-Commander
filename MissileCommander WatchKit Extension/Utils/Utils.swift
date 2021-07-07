@@ -10,28 +10,13 @@ extension Array where Element: Hashable {
     }
 }
 
-func startNewGame() {
-    print("!!!")
-//    let skView = SKView(frame: CGRect(x: 0, y: 0, width: 600, height: 500))
-//
-//    let gameScene = GameScene(size: CGSize(width: 600, height: 500))
-//    gameScene.scaleMode = .aspectFit
-//    skView.presentScene(gameScene)
-//    skView.preferredFramesPerSecond = 60
-//    skView.showsFPS = true
-//    skView.showsNodeCount = true
-
-//    PlaygroundPage.current.liveView = skView
-}
-
 func soundPlayer(sound: String) -> AVAudioPlayer? {
-    if let path = Bundle.main.path(forResource: sound, ofType: nil) {
-        do {
-            let audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
-            return audioPlayer
-        } catch {
-            print("Could not find and play the sound file")
-        }
+    do {
+        guard let audioAsset = NSDataAsset(name: sound) else { return nil }
+        let audioPlayer = try AVAudioPlayer(data: audioAsset.data)
+        return audioPlayer
+    } catch {
+        print("Could not find and play the sound file")
     }
     return nil
 }

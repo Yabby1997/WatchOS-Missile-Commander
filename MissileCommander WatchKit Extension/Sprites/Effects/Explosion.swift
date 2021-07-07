@@ -7,7 +7,7 @@ public class Explosion: SKSpriteNode {
     init(position: CGPoint, blastRange: Int, gameScene: GameScene) {
         self.blastRange = blastRange
         self.gameScene = gameScene
-        super.init(texture: SKTexture(imageNamed: "explosion_\(blastRange).png"), color: .clear, size: CGSize(width: blastRange, height: blastRange))
+        super.init(texture: SKTexture(image: UIImage(imageLiteralResourceName: "explosion_\(blastRange).png")), color: .clear, size: CGSize(width: blastRange, height: blastRange))
         self.position = position
         
         self.physicsBody = SKPhysicsBody(circleOfRadius: self.size.width / 2)
