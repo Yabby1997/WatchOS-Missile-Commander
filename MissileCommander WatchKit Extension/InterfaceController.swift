@@ -34,12 +34,12 @@ class InterfaceController: WKInterfaceController {
         if gameScene.isGameOver {
             self.startNewGame()
         } else {
-            gameScene.touched(location: CGPoint(x: (location.x / bound.maxX) * 600, y: ((bound.maxY - location.y) / bound.maxY) * 500))
+            gameScene.touched(location: CGPoint(x: (location.x / bound.maxX) * 500, y: ((bound.maxY - location.y) / bound.maxY) * 600))
         }
     }
     
     func startNewGame() {
-        gameScene =  GameScene(size: CGSize(width: 600, height: 500))
+        gameScene =  GameScene(size: CGSize(width: 500, height: 600))
         skView.presentScene(gameScene)
         skView.preferredFramesPerSecond = 60
     }
