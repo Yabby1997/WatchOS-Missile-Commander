@@ -42,7 +42,9 @@ public class GameScene: SKScene, SKPhysicsContactDelegate {
     private var time: Int = 0 {
         didSet {
             self.setTimeLabel(alwaysDisplayColon: false)
-            self.setDifficulty(time: time)
+            if(time % 30 == 0) {
+                self.setDifficulty(time: time)
+            }
         }
     }
     
@@ -87,35 +89,32 @@ public class GameScene: SKScene, SKPhysicsContactDelegate {
     var isGameOver: Bool = false
     private var explosionChainingDelay: Double = 0.2
     
-    private var isWarheadRaidOn: Bool = false
-    private var warheadRaidTimer: Timer!
-    private var warheadPerRaid: Int = 0
-    private var warheadRaidInterval: Double = 0 {
+    private var isWarheadRaidOn: Bool = false {
         didSet {
-            self.isWarheadRaidOn = true
             self.warheadRaid()
         }
     }
+    private var warheadRaidTimer: Timer!
+    private var warheadPerRaid: Int = 0
+    private var warheadRaidInterval: Double = 10
     
-    private var isBomberRaidOn: Bool = false
-    private var bomberRaidTimer: Timer!
-    private var bomberPerRaid: Int = 0
-    private var bomberRaidInterval: Double = 0 {
+    private var isBomberRaidOn: Bool = false {
         didSet {
-            self.isBomberRaidOn = true
             self.bomberRaid()
         }
     }
+    private var bomberRaidTimer: Timer!
+    private var bomberPerRaid: Int = 0
+    private var bomberRaidInterval: Double = 30
     
-    private var isTzarRaidOn: Bool = false
-    private var tzarRaidTimer: Timer!
-    private var tzarPerRaid: Int = 0
-    private var tzarRaidInterval: Double = 0 {
+    private var isTzarRaidOn: Bool = false {
         didSet {
-            self.isTzarRaidOn = true
             self.tzarRaid()
         }
     }
+    private var tzarRaidTimer: Timer!
+    private var tzarPerRaid: Int = 1
+    private var tzarRaidInterval: Double = 15
     
     private var enemyWarheadVelocityCandidates: [Int] = [50, 55]
     private var enemyWarheadBlastRangeCandidates: [Int] = [40, 45]
@@ -561,72 +560,44 @@ public class GameScene: SKScene, SKPhysicsContactDelegate {
     func setDifficulty(time: Int) {
         if isGameOver { return }
         
-        if time == 360 {
-            self.warheadPerRaid = 30
-            self.bomberPerRaid = 7
-            self.enemyWarheadVelocityCandidates.append(210)
-            self.enemyWarheadVelocityCandidates.append(220)
-        } else if time == 330 {
-            self.warheadPerRaid = 25
-            self.bomberPerRaid = 6
-            self.enemyWarheadVelocityCandidates.append(190)
-            self.enemyWarheadVelocityCandidates.append(200)
-        } else if time == 300 {
-            self.warheadPerRaid = 25
-            self.bomberPerRaid = 5
-            self.enemyWarheadVelocityCandidates.append(170)
-            self.enemyWarheadVelocityCandidates.append(180)
-        } else if time == 270 {
-            self.warheadPerRaid = 20
-            self.bomberPerRaid = 4
-            self.enemyWarheadVelocityCandidates.append(150)
-            self.enemyWarheadVelocityCandidates.append(160)
-        } else if time == 240 {
-            self.warheadPerRaid = 15
-            self.bomberPerRaid = 3
-            self.enemyWarheadVelocityCandidates.append(130)
-            self.enemyWarheadVelocityCandidates.append(140)
-        } else if time == 210 {
-            self.generateDifficultyLabel(text: "Hell", fontColor: .red)
-            self.warheadPerRaid = 10
-            self.bomberPerRaid = 2
-            self.enemyWarheadVelocityCandidates.append(110)
-            self.enemyWarheadVelocityCandidates.append(120)
-        } else if time == 180 {
-            self.generateDifficultyLabel(text: "Final", fontColor: .orange)
-            self.warheadPerRaid = 5
-            self.warheadRaidInterval = 3.0
-            self.bomberPerRaid = 1
-            self.bomberRaidInterval = 21.1
-            self.enemyWarheadVelocityCandidates.append(100)
-        } else if time == 150 {
-            self.generateDifficultyLabel(text: "5", fontColor: .yellow)
-            self.enemyWarheadVelocityCandidates.append(90)
-            self.enemyWarheadBlastRangeCandidates.append(65)
-        } else if time == 120 {
-            self.generateDifficultyLabel(text: "4", fontColor: .yellow)
-            self.warheadPerRaid = 4
-            self.warheadRaidInterval = 3.2
-            self.tzarPerRaid = 1
-            self.tzarRaidInterval = 14.2
-        } else if time == 90 {
-            self.generateDifficultyLabel(text: "3", fontColor: .white)
-            self.enemyWarheadVelocityCandidates.append(80)
-            self.enemyWarheadBlastRangeCandidates.append(60)
-        } else if time == 60 {
-            self.generateDifficultyLabel(text: "2", fontColor: .white)
-            self.warheadPerRaid = 3
-            self.warheadRaidInterval = 3.4
-            self.enemyWarheadVelocityCandidates.append(70)
-            self.enemyWarheadBlastRangeCandidates.append(55)
-        } else if time == 30 {
-            self.generateDifficultyLabel(text: "1", fontColor: .white)
-            self.enemyWarheadVelocityCandidates.append(60)
+        let level = time / 30 + 1
+        
+        self.generateDifficultyLabel(text: "\(level)", fontColor: .red)
+        
+        if(level <= 10) {
+            self.isWarheadRaidOn = true
+            self.warheadPerRaid += 1
+            self.warheadRaidInterval -= 0.5
+        }
+        
+        if(level >= 5 && level <= 15) {
+            self.isTzarRaidOn = true
+            self.tzarRaidInterval -= 0.527
+        }
+        
+        if(level >= 8 && level <= 20) {
+            self.isBomberRaidOn = true
+            self.bomberRaidInterval -= 1.233
+        }
+        
+        if(level == 3) {
             self.enemyWarheadBlastRangeCandidates.append(50)
-        } else if time == 0{
-            self.generateDifficultyLabel(text: "0", fontColor: .white)
-            self.warheadPerRaid = 2
-            self.warheadRaidInterval = 3.6
+            self.enemyWarheadVelocityCandidates.append(60)
+        }
+        
+        if(level == 5) {
+            self.enemyWarheadBlastRangeCandidates.append(55)
+            self.enemyWarheadVelocityCandidates.append(70)
+        }
+        
+        if(level == 10) {
+            self.enemyWarheadBlastRangeCandidates.append(60)
+            self.enemyWarheadVelocityCandidates.append(80)
+        }
+        
+        if(level == 15) {
+            self.enemyWarheadBlastRangeCandidates.append(65)
+            self.enemyWarheadVelocityCandidates.append(90)
         }
     }
     
