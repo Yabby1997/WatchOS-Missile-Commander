@@ -104,7 +104,7 @@ public class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     private var bomberRaidTimer: Timer!
-    private var bomberPerRaid: Int = 0
+    private var bomberPerRaid: Int = 1
     private var bomberRaidInterval: Double = 30
     
     private var isTzarRaidOn: Bool = false {
@@ -711,22 +711,21 @@ public class GameScene: SKScene, SKPhysicsContactDelegate {
     
     @objc func generateEnemyWarhead() {
         for _ in 1...warheadPerRaid {
-            guard let randomTargetLocation = self.randomTargetLocation else {
-                print("no targets are available")
-                return
-            }
-            
             let timeSpread = Double.random(in: 0...warheadRaidInterval)
-            let to = self.calculateActualCoordinateOfLocation(location: randomTargetLocation, usePreciseLocation: false)
-            let fromX = Int.random(in: 1...500)
-            let from = CGPoint(x: fromX, y: 600)
-            
-            let distance = getDistance(from: from, to: to)
-            let velocity = CGFloat(self.enemyWarheadVelocityCandidates.randomElement()!)
-            let blastRange =  self.enemyWarheadBlastRangeCandidates.randomElement()!
-            let enemyWarhead = EnemyWarhead(position: from, distance: distance, velocity: velocity, targetCoordinate: to, blastRange: blastRange, gameScene: self)
-            
-            DispatchQueue.global().asyncAfter(deadline: .now() + timeSpread) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + timeSpread) {
+                guard let randomTargetLocation = self.randomTargetLocation else {
+                    print("no targets are available")
+                    return
+                }
+                let to = self.calculateActualCoordinateOfLocation(location: randomTargetLocation, usePreciseLocation: false)
+                let fromX = Int.random(in: 1...500)
+                let from = CGPoint(x: fromX, y: 600)
+                
+                let distance = getDistance(from: from, to: to)
+                let velocity = CGFloat(self.enemyWarheadVelocityCandidates.randomElement()!)
+                let blastRange =  self.enemyWarheadBlastRangeCandidates.randomElement()!
+                let enemyWarhead = EnemyWarhead(position: from, distance: distance, velocity: velocity, targetCoordinate: to, blastRange: blastRange, gameScene: self)
+                
                 self.addChild(enemyWarhead)
             }
         }
@@ -735,13 +734,13 @@ public class GameScene: SKScene, SKPhysicsContactDelegate {
     @objc func generateEnemyBomber() {
         for _ in 1...bomberPerRaid {
             let timeSpread = Double.random(in: 0...bomberRaidInterval)
-            let fromY = Int.random(in: 200...450)
-            let flightTime = Double.random(in: 2...5)
-            let bombingDuration = Double.random(in: 0.2...0.8)
-            let blastRange =  self.enemyWarheadBlastRangeCandidates.randomElement()!
-            let bomber = Bomber(yPosition: CGFloat(fromY), fromRight: Bool.random(), flightTime: flightTime, bombingDuration: bombingDuration, blastRange: blastRange, gameScene: self)
             
-            DispatchQueue.global().asyncAfter(deadline: .now() + timeSpread) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + timeSpread) {
+                let fromY = Int.random(in: 200...450)
+                let flightTime = Double.random(in: 2...5)
+                let bombingDuration = Double.random(in: 0.2...0.8)
+                let blastRange =  self.enemyWarheadBlastRangeCandidates.randomElement()!
+                let bomber = Bomber(yPosition: CGFloat(fromY), fromRight: Bool.random(), flightTime: flightTime, bombingDuration: bombingDuration, blastRange: blastRange, gameScene: self)
                 self.addChild(bomber)
             }
         }
@@ -749,22 +748,21 @@ public class GameScene: SKScene, SKPhysicsContactDelegate {
     
     @objc func generateEnemyTzar() {
         for _ in 1...tzarPerRaid {
+            let timeSpread = Double.random(in: 0...tzarRaidInterval)
             guard let randomTargetLocation = self.randomTargetLocation else {
                 print("no targets are available")
                 return
             }
             
-            let timeSpread = Double.random(in: 0...tzarRaidInterval)
-            let to = self.calculateActualCoordinateOfLocation(location: randomTargetLocation, usePreciseLocation: false)
-            let fromX = Int.random(in: 1...500)
-            let from = CGPoint(x: fromX, y: 600)
-            
-            let distance = getDistance(from: from, to: to)
-            let velocity = CGFloat(self.enemyWarheadVelocityCandidates.randomElement()!)
-            let blastRange = 300
-            let enemyWarhead = EnemyWarhead(position: from, distance: distance, velocity: velocity, targetCoordinate: to, blastRange: blastRange, gameScene: self)
-            
-            DispatchQueue.global().asyncAfter(deadline: .now() + timeSpread) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + timeSpread) {
+                let to = self.calculateActualCoordinateOfLocation(location: randomTargetLocation, usePreciseLocation: false)
+                let fromX = Int.random(in: 1...500)
+                let from = CGPoint(x: fromX, y: 600)
+                
+                let distance = getDistance(from: from, to: to)
+                let velocity = CGFloat(self.enemyWarheadVelocityCandidates.randomElement()!)
+                let blastRange = 300
+                let enemyWarhead = EnemyWarhead(position: from, distance: distance, velocity: velocity, targetCoordinate: to, blastRange: blastRange, gameScene: self)
                 self.addChild(enemyWarhead)
             }
         }
