@@ -716,6 +716,7 @@ public class GameScene: SKScene, SKPhysicsContactDelegate {
                 return
             }
             
+            let timeSpread = Double.random(in: 0...warheadRaidInterval)
             let to = self.calculateActualCoordinateOfLocation(location: randomTargetLocation, usePreciseLocation: false)
             let fromX = Int.random(in: 1...500)
             let from = CGPoint(x: fromX, y: 600)
@@ -724,18 +725,25 @@ public class GameScene: SKScene, SKPhysicsContactDelegate {
             let velocity = CGFloat(self.enemyWarheadVelocityCandidates.randomElement()!)
             let blastRange =  self.enemyWarheadBlastRangeCandidates.randomElement()!
             let enemyWarhead = EnemyWarhead(position: from, distance: distance, velocity: velocity, targetCoordinate: to, blastRange: blastRange, gameScene: self)
-            addChild(enemyWarhead)
+            
+            DispatchQueue.global().asyncAfter(deadline: .now() + timeSpread) {
+                self.addChild(enemyWarhead)
+            }
         }
     }
     
     @objc func generateEnemyBomber() {
         for _ in 1...bomberPerRaid {
+            let timeSpread = Double.random(in: 0...bomberRaidInterval)
             let fromY = Int.random(in: 200...450)
             let flightTime = Double.random(in: 2...5)
             let bombingDuration = Double.random(in: 0.2...0.8)
             let blastRange =  self.enemyWarheadBlastRangeCandidates.randomElement()!
             let bomber = Bomber(yPosition: CGFloat(fromY), fromRight: Bool.random(), flightTime: flightTime, bombingDuration: bombingDuration, blastRange: blastRange, gameScene: self)
-            addChild(bomber)
+            
+            DispatchQueue.global().asyncAfter(deadline: .now() + timeSpread) {
+                self.addChild(bomber)
+            }
         }
     }
     
@@ -746,6 +754,7 @@ public class GameScene: SKScene, SKPhysicsContactDelegate {
                 return
             }
             
+            let timeSpread = Double.random(in: 0...tzarRaidInterval)
             let to = self.calculateActualCoordinateOfLocation(location: randomTargetLocation, usePreciseLocation: false)
             let fromX = Int.random(in: 1...500)
             let from = CGPoint(x: fromX, y: 600)
@@ -754,7 +763,10 @@ public class GameScene: SKScene, SKPhysicsContactDelegate {
             let velocity = CGFloat(self.enemyWarheadVelocityCandidates.randomElement()!)
             let blastRange = 300
             let enemyWarhead = EnemyWarhead(position: from, distance: distance, velocity: velocity, targetCoordinate: to, blastRange: blastRange, gameScene: self)
-            addChild(enemyWarhead)
+            
+            DispatchQueue.global().asyncAfter(deadline: .now() + timeSpread) {
+                self.addChild(enemyWarhead)
+            }
         }
     }
     
