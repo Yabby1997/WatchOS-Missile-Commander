@@ -95,7 +95,7 @@ public class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     private var warheadRaidTimer: Timer!
-    private var warheadPerRaid: Int = 0
+    private var warheadPerRaid: Int = 3
     private var warheadRaidInterval: Double = 10
     
     private var isBomberRaidOn: Bool = false {
@@ -119,29 +119,31 @@ public class GameScene: SKScene, SKPhysicsContactDelegate {
     private var enemyWarheadVelocityCandidates: [Int] = [50, 55]
     private var enemyWarheadBlastRangeCandidates: [Int] = [40, 45]
     
-    private var playerExplosionWarheadDropProbability: Double = 3
-    private var enemyExplosionWarheadDropProbability: Double = 5
-    private var playerExplosionTzarDropProbability: Double = 5
-    private var enemyExplosionTzarDropProbability: Double = 8
+    private var tzarVelocityCandidates: [Int] = [80, 100]
+    
+    private var playerExplosionWarheadDropProbability: Double = 2
+    private var enemyExplosionWarheadDropProbability: Double = 3
+    private var playerExplosionTzarDropProbability: Double = 3
+    private var enemyExplosionTzarDropProbability: Double = 5
     private var playerExplosionBomberDropProbability: Double = 5
     private var enemyExplosionBomberDropProbability: Double = 8
     
     // MARK: - Player Status
     static let itemScore: UInt64 = 10000
     
-    static let initialPlayerMissileCapacity: Int = 2
+    static let initialPlayerMissileCapacity: Int = 1
     static let initialPlayerMissileReloadTime: Double = 3.0
     static let initialPlayerMissileVelocity: CGFloat = 250
     static let initialPlayerExplosionBlastRange: Int = 40
-    static let initialGlobalExplosionDuration: Double = 0.5
+    static let initialGlobalExplosionDuration: Double = 0.3
     
     static let maximumPlayerMissileCapacity: Int = 5
-    static let minimumPlayerMissileReloadTime: Double = 1.0
+    static let minimumPlayerMissileReloadTime: Double = 2.0
     static let maximumPlayerMissileVelocity: CGFloat = 450
     static let maximumPlayerExplosionBlastRange: Int = 65
-    static let maximumGlobalExplosionDuration: Double = 1.5
+    static let maximumGlobalExplosionDuration: Double = 1.0
     
-    static let missileCapacityUpgradeAmount: Int = (maximumPlayerMissileCapacity - initialPlayerMissileCapacity) / 3
+    static let missileCapacityUpgradeAmount: Int = (maximumPlayerMissileCapacity - initialPlayerMissileCapacity) / 4
     static let missileReloadTimeUpgradeAmount: Double = (minimumPlayerMissileReloadTime - initialPlayerMissileReloadTime) / 5
     static let missileVelocityUpgradeAmount: CGFloat = (maximumPlayerMissileVelocity - initialPlayerMissileVelocity) / 5
     static let explosionBlastRangeUpgradeAmount: Int = (maximumPlayerExplosionBlastRange - initialPlayerExplosionBlastRange) / 5
@@ -567,7 +569,6 @@ public class GameScene: SKScene, SKPhysicsContactDelegate {
         if(level <= 10) {
             self.isWarheadRaidOn = true
             self.warheadPerRaid += 1
-            self.warheadRaidInterval -= 0.5
         }
         
         if(level >= 5 && level <= 15) {
@@ -593,11 +594,31 @@ public class GameScene: SKScene, SKPhysicsContactDelegate {
         if(level == 10) {
             self.enemyWarheadBlastRangeCandidates.append(60)
             self.enemyWarheadVelocityCandidates.append(80)
+            self.enemyWarheadVelocityCandidates.append(120)
+            self.bomberPerRaid += 1
         }
         
         if(level == 15) {
             self.enemyWarheadBlastRangeCandidates.append(65)
             self.enemyWarheadVelocityCandidates.append(90)
+            self.enemyWarheadVelocityCandidates.append(140)
+        }
+        
+        if(level == 20) {
+            self.enemyWarheadVelocityCandidates.append(100)
+            self.enemyWarheadVelocityCandidates.append(160)
+            self.bomberPerRaid += 1
+        }
+        
+        if(level == 25) {
+            self.enemyWarheadVelocityCandidates.append(110)
+            self.enemyWarheadVelocityCandidates.append(180)
+        }
+        
+        if(level == 30) {
+            self.enemyWarheadVelocityCandidates.append(120)
+            self.enemyWarheadVelocityCandidates.append(200)
+            self.bomberPerRaid += 1
         }
     }
     
@@ -760,7 +781,7 @@ public class GameScene: SKScene, SKPhysicsContactDelegate {
                 let from = CGPoint(x: fromX, y: 600)
                 
                 let distance = getDistance(from: from, to: to)
-                let velocity = CGFloat(self.enemyWarheadVelocityCandidates.randomElement()!)
+                let velocity = CGFloat(self.tzarVelocityCandidates.randomElement()!)
                 let blastRange = 300
                 let enemyWarhead = EnemyWarhead(position: from, distance: distance, velocity: velocity, targetCoordinate: to, blastRange: blastRange, gameScene: self)
                 self.addChild(enemyWarhead)
