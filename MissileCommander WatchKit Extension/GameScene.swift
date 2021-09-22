@@ -42,7 +42,9 @@ public class GameScene: SKScene, SKPhysicsContactDelegate {
     private var time: Int = 0 {
         didSet {
             self.setTimeLabel(alwaysDisplayColon: false)
-            self.setDifficulty(time: time)
+            if(time % 30 == 0) {
+                self.setDifficulty(time: time)
+            }
         }
     }
     
@@ -87,62 +89,61 @@ public class GameScene: SKScene, SKPhysicsContactDelegate {
     var isGameOver: Bool = false
     private var explosionChainingDelay: Double = 0.2
     
-    private var isWarheadRaidOn: Bool = false
-    private var warheadRaidTimer: Timer!
-    private var warheadPerRaid: Int = 0
-    private var warheadRaidInterval: Double = 0 {
+    private var isWarheadRaidOn: Bool = false {
         didSet {
-            self.isWarheadRaidOn = true
             self.warheadRaid()
         }
     }
+    private var warheadRaidTimer: Timer!
+    private var warheadPerRaid: Int = 3
+    private var warheadRaidInterval: Double = 10
     
-    private var isBomberRaidOn: Bool = false
-    private var bomberRaidTimer: Timer!
-    private var bomberPerRaid: Int = 0
-    private var bomberRaidInterval: Double = 0 {
+    private var isBomberRaidOn: Bool = false {
         didSet {
-            self.isBomberRaidOn = true
             self.bomberRaid()
         }
     }
+    private var bomberRaidTimer: Timer!
+    private var bomberPerRaid: Int = 1
+    private var bomberRaidInterval: Double = 30
     
-    private var isTzarRaidOn: Bool = false
-    private var tzarRaidTimer: Timer!
-    private var tzarPerRaid: Int = 0
-    private var tzarRaidInterval: Double = 0 {
+    private var isTzarRaidOn: Bool = false {
         didSet {
-            self.isTzarRaidOn = true
             self.tzarRaid()
         }
     }
+    private var tzarRaidTimer: Timer!
+    private var tzarPerRaid: Int = 1
+    private var tzarRaidInterval: Double = 15
     
     private var enemyWarheadVelocityCandidates: [Int] = [50, 55]
     private var enemyWarheadBlastRangeCandidates: [Int] = [40, 45]
     
-    private var playerExplosionWarheadDropProbability: Double = 3
-    private var enemyExplosionWarheadDropProbability: Double = 5
-    private var playerExplosionTzarDropProbability: Double = 5
-    private var enemyExplosionTzarDropProbability: Double = 8
+    private var tzarVelocityCandidates: [Int] = [80, 100]
+    
+    private var playerExplosionWarheadDropProbability: Double = 2
+    private var enemyExplosionWarheadDropProbability: Double = 3
+    private var playerExplosionTzarDropProbability: Double = 3
+    private var enemyExplosionTzarDropProbability: Double = 5
     private var playerExplosionBomberDropProbability: Double = 5
     private var enemyExplosionBomberDropProbability: Double = 8
     
     // MARK: - Player Status
     static let itemScore: UInt64 = 10000
     
-    static let initialPlayerMissileCapacity: Int = 2
+    static let initialPlayerMissileCapacity: Int = 1
     static let initialPlayerMissileReloadTime: Double = 3.0
     static let initialPlayerMissileVelocity: CGFloat = 250
     static let initialPlayerExplosionBlastRange: Int = 40
-    static let initialGlobalExplosionDuration: Double = 0.5
+    static let initialGlobalExplosionDuration: Double = 0.3
     
     static let maximumPlayerMissileCapacity: Int = 5
-    static let minimumPlayerMissileReloadTime: Double = 1.0
+    static let minimumPlayerMissileReloadTime: Double = 2.0
     static let maximumPlayerMissileVelocity: CGFloat = 450
     static let maximumPlayerExplosionBlastRange: Int = 65
-    static let maximumGlobalExplosionDuration: Double = 1.5
+    static let maximumGlobalExplosionDuration: Double = 1.0
     
-    static let missileCapacityUpgradeAmount: Int = (maximumPlayerMissileCapacity - initialPlayerMissileCapacity) / 3
+    static let missileCapacityUpgradeAmount: Int = (maximumPlayerMissileCapacity - initialPlayerMissileCapacity) / 4
     static let missileReloadTimeUpgradeAmount: Double = (minimumPlayerMissileReloadTime - initialPlayerMissileReloadTime) / 5
     static let missileVelocityUpgradeAmount: CGFloat = (maximumPlayerMissileVelocity - initialPlayerMissileVelocity) / 5
     static let explosionBlastRangeUpgradeAmount: Int = (maximumPlayerExplosionBlastRange - initialPlayerExplosionBlastRange) / 5
@@ -561,72 +562,63 @@ public class GameScene: SKScene, SKPhysicsContactDelegate {
     func setDifficulty(time: Int) {
         if isGameOver { return }
         
-        if time == 360 {
-            self.warheadPerRaid = 30
-            self.bomberPerRaid = 7
-            self.enemyWarheadVelocityCandidates.append(210)
-            self.enemyWarheadVelocityCandidates.append(220)
-        } else if time == 330 {
-            self.warheadPerRaid = 25
-            self.bomberPerRaid = 6
-            self.enemyWarheadVelocityCandidates.append(190)
-            self.enemyWarheadVelocityCandidates.append(200)
-        } else if time == 300 {
-            self.warheadPerRaid = 25
-            self.bomberPerRaid = 5
-            self.enemyWarheadVelocityCandidates.append(170)
-            self.enemyWarheadVelocityCandidates.append(180)
-        } else if time == 270 {
-            self.warheadPerRaid = 20
-            self.bomberPerRaid = 4
-            self.enemyWarheadVelocityCandidates.append(150)
-            self.enemyWarheadVelocityCandidates.append(160)
-        } else if time == 240 {
-            self.warheadPerRaid = 15
-            self.bomberPerRaid = 3
-            self.enemyWarheadVelocityCandidates.append(130)
-            self.enemyWarheadVelocityCandidates.append(140)
-        } else if time == 210 {
-            self.generateDifficultyLabel(text: "Hell", fontColor: .red)
-            self.warheadPerRaid = 10
-            self.bomberPerRaid = 2
-            self.enemyWarheadVelocityCandidates.append(110)
-            self.enemyWarheadVelocityCandidates.append(120)
-        } else if time == 180 {
-            self.generateDifficultyLabel(text: "Final", fontColor: .orange)
-            self.warheadPerRaid = 5
-            self.warheadRaidInterval = 3.0
-            self.bomberPerRaid = 1
-            self.bomberRaidInterval = 21.1
-            self.enemyWarheadVelocityCandidates.append(100)
-        } else if time == 150 {
-            self.generateDifficultyLabel(text: "5", fontColor: .yellow)
-            self.enemyWarheadVelocityCandidates.append(90)
-            self.enemyWarheadBlastRangeCandidates.append(65)
-        } else if time == 120 {
-            self.generateDifficultyLabel(text: "4", fontColor: .yellow)
-            self.warheadPerRaid = 4
-            self.warheadRaidInterval = 3.2
-            self.tzarPerRaid = 1
-            self.tzarRaidInterval = 14.2
-        } else if time == 90 {
-            self.generateDifficultyLabel(text: "3", fontColor: .white)
-            self.enemyWarheadVelocityCandidates.append(80)
-            self.enemyWarheadBlastRangeCandidates.append(60)
-        } else if time == 60 {
-            self.generateDifficultyLabel(text: "2", fontColor: .white)
-            self.warheadPerRaid = 3
-            self.warheadRaidInterval = 3.4
-            self.enemyWarheadVelocityCandidates.append(70)
-            self.enemyWarheadBlastRangeCandidates.append(55)
-        } else if time == 30 {
-            self.generateDifficultyLabel(text: "1", fontColor: .white)
-            self.enemyWarheadVelocityCandidates.append(60)
+        let level = time / 30 + 1
+        
+        self.generateDifficultyLabel(text: "\(level)", fontColor: .red)
+        
+        if(level <= 10) {
+            self.isWarheadRaidOn = true
+            self.warheadPerRaid += 1
+        }
+        
+        if(level >= 5 && level <= 15) {
+            self.isTzarRaidOn = true
+            self.tzarRaidInterval -= 0.527
+        }
+        
+        if(level >= 8 && level <= 20) {
+            self.isBomberRaidOn = true
+            self.bomberRaidInterval -= 1.233
+        }
+        
+        if(level == 3) {
             self.enemyWarheadBlastRangeCandidates.append(50)
-        } else if time == 0{
-            self.generateDifficultyLabel(text: "0", fontColor: .white)
-            self.warheadPerRaid = 2
-            self.warheadRaidInterval = 3.6
+            self.enemyWarheadVelocityCandidates.append(60)
+        }
+        
+        if(level == 5) {
+            self.enemyWarheadBlastRangeCandidates.append(55)
+            self.enemyWarheadVelocityCandidates.append(70)
+        }
+        
+        if(level == 10) {
+            self.enemyWarheadBlastRangeCandidates.append(60)
+            self.enemyWarheadVelocityCandidates.append(80)
+            self.enemyWarheadVelocityCandidates.append(120)
+            self.bomberPerRaid += 1
+        }
+        
+        if(level == 15) {
+            self.enemyWarheadBlastRangeCandidates.append(65)
+            self.enemyWarheadVelocityCandidates.append(90)
+            self.enemyWarheadVelocityCandidates.append(140)
+        }
+        
+        if(level == 20) {
+            self.enemyWarheadVelocityCandidates.append(100)
+            self.enemyWarheadVelocityCandidates.append(160)
+            self.bomberPerRaid += 1
+        }
+        
+        if(level == 25) {
+            self.enemyWarheadVelocityCandidates.append(110)
+            self.enemyWarheadVelocityCandidates.append(180)
+        }
+        
+        if(level == 30) {
+            self.enemyWarheadVelocityCandidates.append(120)
+            self.enemyWarheadVelocityCandidates.append(200)
+            self.bomberPerRaid += 1
         }
     }
     
@@ -740,50 +732,60 @@ public class GameScene: SKScene, SKPhysicsContactDelegate {
     
     @objc func generateEnemyWarhead() {
         for _ in 1...warheadPerRaid {
-            guard let randomTargetLocation = self.randomTargetLocation else {
-                print("no targets are available")
-                return
+            let timeSpread = Double.random(in: 0...warheadRaidInterval)
+            DispatchQueue.main.asyncAfter(deadline: .now() + timeSpread) {
+                guard let randomTargetLocation = self.randomTargetLocation else {
+                    print("no targets are available")
+                    return
+                }
+                let to = self.calculateActualCoordinateOfLocation(location: randomTargetLocation, usePreciseLocation: false)
+                let fromX = Int.random(in: 1...500)
+                let from = CGPoint(x: fromX, y: 600)
+                
+                let distance = getDistance(from: from, to: to)
+                let velocity = CGFloat(self.enemyWarheadVelocityCandidates.randomElement()!)
+                let blastRange =  self.enemyWarheadBlastRangeCandidates.randomElement()!
+                let enemyWarhead = EnemyWarhead(position: from, distance: distance, velocity: velocity, targetCoordinate: to, blastRange: blastRange, gameScene: self)
+                
+                self.addChild(enemyWarhead)
             }
-            
-            let to = self.calculateActualCoordinateOfLocation(location: randomTargetLocation, usePreciseLocation: false)
-            let fromX = Int.random(in: 1...500)
-            let from = CGPoint(x: fromX, y: 600)
-            
-            let distance = getDistance(from: from, to: to)
-            let velocity = CGFloat(self.enemyWarheadVelocityCandidates.randomElement()!)
-            let blastRange =  self.enemyWarheadBlastRangeCandidates.randomElement()!
-            let enemyWarhead = EnemyWarhead(position: from, distance: distance, velocity: velocity, targetCoordinate: to, blastRange: blastRange, gameScene: self)
-            addChild(enemyWarhead)
         }
     }
     
     @objc func generateEnemyBomber() {
         for _ in 1...bomberPerRaid {
-            let fromY = Int.random(in: 200...450)
-            let flightTime = Double.random(in: 2...5)
-            let bombingDuration = Double.random(in: 0.2...0.8)
-            let blastRange =  self.enemyWarheadBlastRangeCandidates.randomElement()!
-            let bomber = Bomber(yPosition: CGFloat(fromY), fromRight: Bool.random(), flightTime: flightTime, bombingDuration: bombingDuration, blastRange: blastRange, gameScene: self)
-            addChild(bomber)
+            let timeSpread = Double.random(in: 0...bomberRaidInterval)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + timeSpread) {
+                let fromY = Int.random(in: 200...450)
+                let flightTime = Double.random(in: 2...5)
+                let bombingDuration = Double.random(in: 0.2...0.8)
+                let blastRange =  self.enemyWarheadBlastRangeCandidates.randomElement()!
+                let bomber = Bomber(yPosition: CGFloat(fromY), fromRight: Bool.random(), flightTime: flightTime, bombingDuration: bombingDuration, blastRange: blastRange, gameScene: self)
+                self.addChild(bomber)
+            }
         }
     }
     
     @objc func generateEnemyTzar() {
         for _ in 1...tzarPerRaid {
+            let timeSpread = Double.random(in: 0...tzarRaidInterval)
             guard let randomTargetLocation = self.randomTargetLocation else {
                 print("no targets are available")
                 return
             }
             
-            let to = self.calculateActualCoordinateOfLocation(location: randomTargetLocation, usePreciseLocation: false)
-            let fromX = Int.random(in: 1...500)
-            let from = CGPoint(x: fromX, y: 600)
-            
-            let distance = getDistance(from: from, to: to)
-            let velocity = CGFloat(self.enemyWarheadVelocityCandidates.randomElement()!)
-            let blastRange = 300
-            let enemyWarhead = EnemyWarhead(position: from, distance: distance, velocity: velocity, targetCoordinate: to, blastRange: blastRange, gameScene: self)
-            addChild(enemyWarhead)
+            DispatchQueue.main.asyncAfter(deadline: .now() + timeSpread) {
+                let to = self.calculateActualCoordinateOfLocation(location: randomTargetLocation, usePreciseLocation: false)
+                let fromX = Int.random(in: 1...500)
+                let from = CGPoint(x: fromX, y: 600)
+                
+                let distance = getDistance(from: from, to: to)
+                let velocity = CGFloat(self.tzarVelocityCandidates.randomElement()!)
+                let blastRange = 300
+                let enemyWarhead = EnemyWarhead(position: from, distance: distance, velocity: velocity, targetCoordinate: to, blastRange: blastRange, gameScene: self)
+                self.addChild(enemyWarhead)
+            }
         }
     }
     
